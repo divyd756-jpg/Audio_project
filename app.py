@@ -9,8 +9,8 @@ from io import BytesIO
 langs_dict = GoogleTranslator().get_supported_languages(as_dict=True)
 
 def main():
-    st.image("WhatsAPP Image 2025-04-25 at 1.30.23PM.jpeg")
-    st.title(" PragyanAI - VVIET Workshop: Audio Hub")
+    st.image("123.jpeg")
+    st.title(" 123: Audio Hub")
     
     audio_bytes = audio_recorder(text="Click to record", neutral_color="#6aa36f")
     
@@ -28,11 +28,11 @@ def main():
                 with sr.AudioFile(BytesIO(audio_bytes)) as source:
                     audio_data = recognizer.record(source)
                     text = recognizer.recognize_google(audio_data)
-                    st.success(f"*Original:* {text}")
+                    st.success(f"**Original:** {text}")
 
                 # 2. Translation (Using deep-translator)
                 translated_text = GoogleTranslator(source='auto', target=target_code).translate(text)
-                st.info(f"*Translated:* {translated_text}")
+                st.info(f"**Translated:** {translated_text}")
 
                 # 3. Text to Speech
                 tts = gTTS(text=translated_text, lang=target_code)
@@ -43,5 +43,5 @@ def main():
             except Exception as e:
                 st.error(f"Error: {e}")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
